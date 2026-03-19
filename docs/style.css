@@ -311,15 +311,23 @@ section {
   gap: 20px;
 }
 
+.project-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
 .project-card {
   border: 1px solid var(--green-border);
   border-radius: 8px;
   padding: 24px;
   background: var(--bg-card);
   transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
-.project-card:hover {
+.project-card-link:hover .project-card {
   border-color: var(--green-border-hover);
   transform: translateY(-2px);
   box-shadow: 0 0 30px rgba(0, 255, 136, 0.06);
@@ -392,6 +400,8 @@ section {
   align-items: center;
   gap: 4px;
   transition: opacity 0.2s;
+  position: relative;
+  z-index: 1;
 }
 
 .project-links a::before {
