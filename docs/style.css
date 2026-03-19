@@ -1,0 +1,593 @@
+/* ===== CSS Custom Properties ===== */
+:root {
+  --bg: #0a0a0a;
+  --bg-card: rgba(0, 255, 136, 0.02);
+  --green: #00ff88;
+  --green-dim: rgba(0, 255, 136, 0.6);
+  --green-glow: rgba(0, 255, 136, 0.15);
+  --green-border: rgba(0, 255, 136, 0.15);
+  --green-border-hover: rgba(0, 255, 136, 0.4);
+  --text: #ffffff;
+  --text-dim: rgba(255, 255, 255, 0.4);
+  --text-muted: rgba(255, 255, 255, 0.3);
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', 'Cascadia Code', 'Consolas', monospace;
+  --max-width: 900px;
+  --nav-height: 60px;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ===== Grid Background ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(0, 255, 136, 0.018) 40px, rgba(0, 255, 136, 0.018) 41px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(0, 255, 136, 0.018) 40px, rgba(0, 255, 136, 0.018) 41px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ===== Scan Line ===== */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 136, 0.06), transparent);
+  animation: scanline 8s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes scanline {
+  0% { top: -2px; }
+  100% { top: 100vh; }
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: rgba(0, 255, 136, 0.25);
+  color: #fff;
+}
+
+a {
+  color: var(--green);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+/* ===== Nav ===== */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(0, 255, 136, 0.08);
+  transition: border-color 0.3s;
+}
+
+.nav.scrolled {
+  border-bottom-color: rgba(0, 255, 136, 0.2);
+}
+
+.nav-logo {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-size: 13px;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--green);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--green);
+  opacity: 1;
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+/* Mobile hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.nav-toggle.open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ===== Sections ===== */
+section {
+  position: relative;
+  z-index: 2;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ===== Command Prompt ===== */
+.prompt {
+  color: var(--green);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt::before {
+  content: '$';
+  opacity: 0.6;
+}
+
+.cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--green);
+  animation: blink 1s step-end infinite;
+  vertical-align: middle;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ===== Hero ===== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: var(--nav-height);
+}
+
+.hero-prompt {
+  color: var(--green-dim);
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+
+.hero h1 .typed-text {
+  display: inline;
+}
+
+.hero h1 .hero-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 52px;
+  background: var(--green);
+  animation: blink 1s step-end infinite;
+  vertical-align: bottom;
+  margin-left: 4px;
+}
+
+.hero-subtitle {
+  color: var(--text-dim);
+  font-size: 15px;
+  letter-spacing: 1px;
+  margin-top: 8px;
+}
+
+.hero-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.hero-glow-1 {
+  width: 300px;
+  height: 300px;
+  background: rgba(0, 255, 136, 0.04);
+  top: 20%;
+  right: -50px;
+}
+
+.hero-glow-2 {
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 255, 136, 0.03);
+  bottom: 30%;
+  left: -30px;
+}
+
+/* ===== About ===== */
+.about-content {
+  border: 1px solid var(--green-border);
+  border-radius: 8px;
+  padding: 28px;
+  background: var(--bg-card);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ===== Projects ===== */
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.project-card {
+  border: 1px solid var(--green-border);
+  border-radius: 8px;
+  padding: 24px;
+  background: var(--bg-card);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  border-color: var(--green-border-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.06);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.project-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 1px;
+}
+
+.project-badge {
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.25);
+  border-radius: 4px;
+  padding: 3px 10px;
+  color: var(--green);
+  font-size: 10px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.project-badge.dev {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-muted);
+}
+
+.project-desc {
+  color: var(--text-dim);
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.project-tag {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: var(--text-muted);
+  font-size: 11px;
+}
+
+.project-links {
+  display: flex;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(0, 255, 136, 0.08);
+}
+
+.project-links a {
+  color: var(--green);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.2s;
+}
+
+.project-links a::before {
+  content: '\2192';
+}
+
+.project-links a:hover {
+  opacity: 0.7;
+}
+
+/* ===== Other Repos ===== */
+.repos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.repo-item {
+  border: 1px solid var(--green-border);
+  border-radius: 6px;
+  padding: 18px 24px;
+  background: var(--bg-card);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.3s;
+}
+
+.repo-item:hover {
+  border-color: var(--green-border-hover);
+}
+
+.repo-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.repo-name {
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.repo-desc {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
+.repo-lang {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  padding: 3px 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.repo-link {
+  color: var(--green);
+  font-size: 12px;
+}
+
+/* ===== Footer ===== */
+.footer {
+  text-align: center;
+  padding: 60px 24px 40px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.footer .prompt {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 20px;
+}
+
+.footer-links a {
+  color: var(--text-muted);
+  font-size: 12px;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--green);
+}
+
+.footer-copy {
+  color: rgba(255, 255, 255, 0.15);
+  font-size: 11px;
+}
+
+/* ===== Scroll Reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 0;
+    gap: 20px;
+    border-bottom: 1px solid var(--green-border);
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .nav-links.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .hero h1 {
+    font-size: 32px;
+    letter-spacing: 2px;
+  }
+
+  .hero h1 .hero-cursor {
+    height: 32px;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+  }
+
+  section {
+    padding: 60px 16px;
+  }
+
+  .project-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .project-links {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .repo-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .repo-info {
+    flex-direction: column;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero h1 .hero-cursor {
+    height: 26px;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+  }
+}

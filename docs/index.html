@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dustin Hannon — Developer</title>
+  <meta name="description" content="Dustin Hannon — Developer at Morgan White Group. Building tools with Next.js, TypeScript, Supabase, and AI.">
+  <meta property="og:title" content="Dustin Hannon — Developer">
+  <meta property="og:description" content="Developer at Morgan White Group. Building tools with Next.js, TypeScript, Supabase, and AI.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ===== Nav ===== -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">DH://</a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">about</a></li>
+      <li><a href="#projects">projects</a></li>
+      <li><a href="#repos">repos</a></li>
+    </ul>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- ===== Hero ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-glow hero-glow-1"></div>
+    <div class="hero-glow hero-glow-2"></div>
+    <div class="hero-prompt">$ whoami</div>
+    <h1>
+      <span class="typed-text" id="typed-text"></span><span class="hero-cursor" id="hero-cursor"></span>
+    </h1>
+    <p class="hero-subtitle">Developer @ Morgan White Group &nbsp;|&nbsp; Ridgeland, MS</p>
+  </section>
+
+  <!-- ===== About ===== -->
+  <section id="about">
+    <div class="prompt reveal">cat about.txt</div>
+    <div class="about-content reveal">
+      I'm a developer at Morgan White Group who thrives on turning ideas into real, working products. My stack revolves around Next.js, TypeScript, Supabase, and Node.js — with a growing focus on AI-powered tools using OpenAI. From building internal business platforms to launching side projects, I'm driven by the challenge of shipping software that people actually use. Every repo here is something I built, shipped, and maintain — no tutorials, no templates, just real-world tools solving real problems.
+    </div>
+  </section>
+
+  <!-- ===== Featured Projects ===== -->
+  <section id="projects">
+    <div class="prompt reveal">ls ./projects --detail</div>
+    <div class="projects-grid">
+
+      <!-- CheatBook -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">CheatBook</span>
+          <span class="project-badge">LIVE</span>
+        </div>
+        <p class="project-desc">An AI-powered collaborative note-taking platform. Take notes, capture ideas, and organize quick snippets together in a team environment.</p>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">Supabase</span>
+        </div>
+        <div class="project-links">
+          <a href="https://thecheatbook.vercel.app" target="_blank" rel="noopener">Live Site</a>
+          <a href="https://github.com/DustinHannon/CheatBook#readme" target="_blank" rel="noopener">README</a>
+          <a href="https://github.com/DustinHannon/CheatBook" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- RackInv2 -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">RackInv2</span>
+          <span class="project-badge">LIVE</span>
+        </div>
+        <p class="project-desc">A data center rack inventory system with 3D room visualization. Track hardware, manage rack layouts, and monitor infrastructure in real time.</p>
+        <div class="project-tags">
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Next.js</span>
+          <span class="project-tag">Supabase</span>
+        </div>
+        <div class="project-links">
+          <a href="https://rack-inv-2.vercel.app" target="_blank" rel="noopener">Live Site</a>
+          <a href="https://github.com/DustinHannon/RackInv2#readme" target="_blank" rel="noopener">README</a>
+          <a href="https://github.com/DustinHannon/RackInv2" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- DarlingDrinkCompany -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">DarlingDrinkCompany</span>
+          <span class="project-badge">LIVE</span>
+        </div>
+        <p class="project-desc">The official website for Darling Drink Company. A modern, polished brand site built with a focus on clean design and fast performance.</p>
+        <div class="project-tags">
+          <span class="project-tag">TypeScript</span>
+          <span class="project-tag">Next.js</span>
+        </div>
+        <div class="project-links">
+          <a href="https://darlingdrinkco.com" target="_blank" rel="noopener">Live Site</a>
+          <a href="https://github.com/DustinHannon/DarlingDrinkCompany#readme" target="_blank" rel="noopener">README</a>
+          <a href="https://github.com/DustinHannon/DarlingDrinkCompany" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+      <!-- MWG_CS_BOT -->
+      <div class="project-card reveal">
+        <div class="project-header">
+          <span class="project-name">MWG_CS_BOT</span>
+          <span class="project-badge">LIVE</span>
+        </div>
+        <p class="project-desc">An AI-powered customer service chatbot for Morgan White Group. Uses OpenAI models to handle customer inquiries with context-aware responses.</p>
+        <div class="project-tags">
+          <span class="project-tag">JavaScript</span>
+          <span class="project-tag">Node.js</span>
+          <span class="project-tag">OpenAI</span>
+        </div>
+        <div class="project-links">
+          <a href="https://mwg-cs-bot.vercel.app" target="_blank" rel="noopener">Live Site</a>
+          <a href="https://github.com/DustinHannon/MWG_CS_BOT#readme" target="_blank" rel="noopener">README</a>
+          <a href="https://github.com/DustinHannon/MWG_CS_BOT" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Other Repos ===== -->
+  <section id="repos">
+    <div class="prompt reveal">ls ./repos</div>
+    <div class="repos-list">
+
+      <div class="repo-item reveal">
+        <div class="repo-info">
+          <span class="repo-name">SWGEmu_SilentSurvivor</span>
+          <span class="repo-desc">SWGEmu Project — custom game server scripts and configurations</span>
+        </div>
+        <span class="repo-lang">Lua</span>
+        <a href="https://github.com/DustinHannon/SWGEmu_SilentSurvivor" target="_blank" rel="noopener" class="repo-link">View on GitHub &rarr;</a>
+      </div>
+
+      <div class="repo-item reveal">
+        <div class="repo-info">
+          <span class="repo-name">PlayBuilds</span>
+          <span class="repo-desc">Experimental test builds and prototypes</span>
+        </div>
+        <span class="repo-lang">HTML</span>
+        <a href="https://github.com/DustinHannon/PlayBuilds" target="_blank" rel="noopener" class="repo-link">View on GitHub &rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer">
+    <div class="prompt">exit</div>
+    <div class="footer-links">
+      <a href="https://github.com/DustinHannon" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.morganwhite.com" target="_blank" rel="noopener">Morgan White Group</a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Dustin Hannon. Built with pure HTML, CSS &amp; JS.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
