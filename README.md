@@ -28,6 +28,6 @@ I lead IT infrastructure, cloud services, and cybersecurity strategy at Morgan W
 
 <p align="center">
   <a href="https://dustinhannon.github.io/DustinHannon/">
-    <img src="https://img.shields.io/badge/Portfolio_Site-00ff88?style=for-the-badge&logo=github&logoColor=000" alt="Portfolio Site" />
+    <img src="https://img.shields.io/badge/Portfolio_Site-2ea043?style=for-the-badge&logo=github&logoColor=fff" alt="Portfolio Site" />
   </a>
 </p>
